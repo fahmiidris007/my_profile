@@ -17,7 +17,7 @@ class MyInfo extends StatelessWidget {
           ),
           const CircleAvatar(
             radius: 50,
-            backgroundImage: AssetImage('assets/images/photo_fahmi.jpg'),
+            backgroundImage: AssetImage('assets/images/profile.jpg'),
           ),
           const Spacer(),
           Text(

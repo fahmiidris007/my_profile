@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:profile_portfolio/constants.dart';
 import 'package:profile_portfolio/models/project.dart';
 import 'package:profile_portfolio/responsive.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ProjectCard extends StatelessWidget {
   const ProjectCard({
@@ -32,7 +33,9 @@ class ProjectCard extends StatelessWidget {
         const Spacer(),
         Center(
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              launchUrlString(project.link!);
+            },
             child: const Text(
               "Explore more",
               style: TextStyle(color: primaryColor),

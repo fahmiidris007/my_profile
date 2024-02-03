@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:profile_portfolio/constants.dart';
 import 'package:profile_portfolio/responsive.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HomeBanner extends StatelessWidget {
   const HomeBanner({
@@ -45,7 +46,9 @@ class HomeBanner extends StatelessWidget {
                 ),
                 if (!Responsive.isMobileLarge(context))
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      launchUrlString('https://github.com/fahmiidris007');
+                    },
                     style: TextButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
                             horizontal: defaultPadding * 2,

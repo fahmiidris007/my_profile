@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:profile_portfolio/constants.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class MyCV extends StatelessWidget {
   const MyCV({
@@ -9,7 +10,10 @@ class MyCV extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        launchUrlString(
+            'https://drive.google.com/file/d/1ylJan0Pb1Vyo97-qltqD0AB9sAPWCQvP/view?usp=sharing');
+      },
       child: FittedBox(
         child: Row(
           children: [

@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:profile_portfolio/constants.dart';
+import 'package:profile_portfolio/responsive.dart';
 
 class HomeBanner extends StatelessWidget {
   const HomeBanner({
@@ -10,7 +11,7 @@ class HomeBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 3,
+      aspectRatio: Responsive.isMobile(context) ? 2.5 : 3,
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -29,17 +30,21 @@ class HomeBanner extends StatelessWidget {
               children: [
                 Text(
                   "Discover My Amazing \nProjects!",
-                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                      fontWeight: FontWeight.bold, color: Colors.white),
+                  style: Responsive.isDesktop(context)
+                      ? Theme.of(context).textTheme.displaySmall!.copyWith(
+                          fontWeight: FontWeight.bold, color: Colors.white)
+                      : Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 const SizedBox(
-                  height: defaultPadding / 2,
+                  height: defaultPadding,
                 ),
                 const MyBuildAnimatedText(),
                 const SizedBox(
                   height: defaultPadding,
                 ),
-                ElevatedButton(
+                if (!Responsive.isMobileLarge(context))
+                  ElevatedButton(
                     onPressed: () {},
                     style: TextButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
@@ -49,7 +54,8 @@ class HomeBanner extends StatelessWidget {
                     child: const Text(
                       "Explore in My Github",
                       style: TextStyle(color: darkColor),
-                    ))
+                    ),
+                  )
               ],
             ),
           )
@@ -68,30 +74,46 @@ class MyBuildAnimatedText extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTextStyle(
       style: Theme.of(context).textTheme.titleMedium!,
+      maxLines: 1,
       child: Row(
         children: [
-          const CustumCodedText(),
-          const SizedBox(width: defaultPadding / 2),
+          if (!Responsive.isMobileLarge(context)) const CustumCodedText(),
+          if (!Responsive.isMobileLarge(context))
+            const SizedBox(width: defaultPadding / 2),
           const Text(" I build "),
-          AnimatedTextKit(
-            animatedTexts: [
-              TyperAnimatedText("Mobile Apps with Kotlin"),
-              TyperAnimatedText("Mobile Apps with Flutter"),
-              TyperAnimatedText("Backend Services with NodeJS"),
-              TyperAnimatedText("Backend Services with GoLang"),
-              TyperAnimatedText("Mediatation Apps to Help You Relax"),
-              TyperAnimatedText("E-commerce Backend Services"),
-              TyperAnimatedText("Restaurants App with Various Features"),
-              TyperAnimatedText("Mobile Apps with Clean Architecture"),
-              TyperAnimatedText("Mobile Apps with CI/CD Implementation"),
-              TyperAnimatedText("Backend Services with TDD implementation"),
-              TyperAnimatedText("Backend Services with CI/CD Implementation"),
-            ],
-          ),
-          const SizedBox(width: defaultPadding / 2),
-          const CustumCodedText(),
+          Responsive.isMobile(context)
+              ? const Expanded(child: AnimatedText())
+              : const AnimatedText(),
+          if (!Responsive.isMobileLarge(context))
+            const SizedBox(width: defaultPadding / 2),
+          if (!Responsive.isMobileLarge(context)) const CustumCodedText(),
         ],
       ),
+    );
+  }
+}
+
+class AnimatedText extends StatelessWidget {
+  const AnimatedText({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedTextKit(
+      animatedTexts: [
+        TyperAnimatedText("Mobile Apps with Kotlin"),
+        TyperAnimatedText("Mobile Apps with Flutter"),
+        TyperAnimatedText("Backend Services with NodeJS"),
+        TyperAnimatedText("Backend Services with GoLang"),
+        TyperAnimatedText("Mediatation Apps to Help You Relax"),
+        TyperAnimatedText("E-commerce Backend Services"),
+        TyperAnimatedText("Restaurants App with Various Features"),
+        TyperAnimatedText("Mobile Apps with Clean Architecture"),
+        TyperAnimatedText("Mobile Apps with CI/CD Implementation"),
+        TyperAnimatedText("Backend Services with TDD implementation"),
+        TyperAnimatedText("Backend Services with CI/CD Implementation"),
+      ],
     );
   }
 }

@@ -16,51 +16,53 @@ class ProfileMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        children: [
-          const MyInfo(),
-          Expanded(
-              child: SingleChildScrollView(
-            padding: const EdgeInsets.all(defaultPadding / 2),
-            child: Column(
-              children: [
-                const MyAreaInfo(
-                  title: "Residence",
-                  text: "Indonesia",
-                ),
-                const MyAreaInfo(
-                  title: "City",
-                  text: "Tangerang",
-                ),
-                const MyAreaInfo(
-                  title: "Age",
-                  text: "23",
-                ),
-                Column(
-                  children: [
-                    const Divider(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: defaultPadding / 2),
-                      child: Text(
-                        "Skills",
-                        style: Theme.of(context).textTheme.titleSmall,
+      child: SafeArea(
+        child: Column(
+          children: [
+            const MyInfo(),
+            Expanded(
+                child: SingleChildScrollView(
+              padding: const EdgeInsets.all(defaultPadding / 2),
+              child: Column(
+                children: [
+                  const MyAreaInfo(
+                    title: "Residence",
+                    text: "Indonesia",
+                  ),
+                  const MyAreaInfo(
+                    title: "City",
+                    text: "Tangerang",
+                  ),
+                  const MyAreaInfo(
+                    title: "Age",
+                    text: "23",
+                  ),
+                  Column(
+                    children: [
+                      const Divider(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: defaultPadding / 2),
+                        child: Text(
+                          "Skills",
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: defaultPadding / 2),
-                const MySkills(),
-                const SizedBox(height: defaultPadding / 2),
-                const MyKnowledges(),
-                const Divider(),
-                const SizedBox(height: defaultPadding / 2),
-                const MyCV(),
-                const MyContact()
-              ],
-            ),
-          ))
-        ],
+                    ],
+                  ),
+                  const SizedBox(height: defaultPadding / 2),
+                  const MySkills(),
+                  const SizedBox(height: defaultPadding / 2),
+                  const MyKnowledges(),
+                  const Divider(),
+                  const SizedBox(height: defaultPadding / 2),
+                  const MyCV(),
+                  const MyContact()
+                ],
+              ),
+            ))
+          ],
+        ),
       ),
     );
   }

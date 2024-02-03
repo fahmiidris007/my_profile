@@ -2,6 +2,8 @@
 
 This is My Portfolio Flutter project.
 
+Click this to view https://fahmiidris007.github.io/my_profile/
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
